@@ -1,0 +1,42 @@
+# Python
+__pycache__/
+*.py[cod]
+*.egg-info/
+*.egg
+.Python
+build/
+dist/
+.eggs/
+.venv/
+venv/
+env/
+
+# Tooling
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# Editors
+.vscode/
+.idea/
+*.swp
+.DS_Store
+
+# Project artefacts
+data/
+runs/
+weights/
+*.pth
+*.pkl
+*.wav
+*.mid
+*.mp3
+midi_cache/
+
+# Preview assets shipped with the repo are exempted from the blanket
+# audio / MIDI ignore above.
+!assets/preview/*.wav
+!assets/preview/*.mid
+!assets/preview/*.mp3
