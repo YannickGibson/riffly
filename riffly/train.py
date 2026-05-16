@@ -15,9 +15,9 @@ import numpy as np
 import torch
 from sklearn.metrics import f1_score
 from torch import nn, optim
+from torch.optim.lr_scheduler import CosineAnnealingLR
 from torch.utils.data import DataLoader
 from tqdm import tqdm
-from transformers import get_cosine_schedule_with_warmup
 
 from riffly.plots import show_val_score_and_loss
 
@@ -114,7 +114,7 @@ def train_loop(
     epochs: int,
     optimizer: optim.Optimizer,
     device: torch.device,
-    scheduler: optim.lr_scheduler.LambdaLR | None = None,
+    scheduler: optim.lr_scheduler.LRScheduler | None = None,
     scaler: torch.amp.GradScaler | None = None,
     vae: bool = False,
     verbose: bool = False,
@@ -214,7 +214,7 @@ def train(
     device: torch.device,
     val_metrics: dict[str, Callable] | None = None,
     val_score_metric: Callable | None = None,
-    scheduler: optim.lr_scheduler.LambdaLR | None = None,
+    scheduler: optim.lr_scheduler.LRScheduler | None = None,
     half: bool = False,
     vae: bool = False,
     use_neptune: bool = False,
@@ -245,11 +245,7 @@ def train(
         raise ValueError(msg)
 
     if scheduler is None:
-        scheduler = get_cosine_schedule_with_warmup(
-            optimizer,
-            num_warmup_steps=0,
-            num_training_steps=epochs,
-        )
+        scheduler = CosineAnnealingLR(optimizer, T_max=epochs)
 
     if use_neptune:
         import neptune

@@ -9,15 +9,22 @@ include = ["riffly*"]
 [project]
 name = "riffly"
 version = "0.1.0"
-description = "Tiny VAE that writes looping rap-style MIDI melodies."
+description = "Tiny VAE that writes loopable, catchy MIDI riffs."
 readme = "README.md"
-license = { text = "MIT" }
+license = "MIT"
+license-files = ["LICENSE"]
 requires-python = ">=3.10"
 authors = [{ name = "Yannick Gibson", email = "gibson.yannick@gmail.com" }]
-keywords = ["midi", "music", "vae", "generative", "deep-learning", "melody"]
+keywords = ["midi", "music", "vae", "generative", "deep-learning", "melody", "riff", "loop"]
 classifiers = [
-    "License :: OSI Approved :: MIT License",
+    "Development Status :: 4 - Beta",
+    "Intended Audience :: Developers",
+    "Intended Audience :: Science/Research",
     "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3 :: Only",
+    "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
     "Topic :: Multimedia :: Sound/Audio :: MIDI",
     "Topic :: Scientific/Engineering :: Artificial Intelligence",
 ]
@@ -29,7 +36,6 @@ dependencies = [
     "scipy",
     "torch",
     "tqdm",
-    "transformers",
 ]
 
 [project.optional-dependencies]
@@ -38,6 +44,7 @@ dev = ["ruff", "mypy", "pytest"]
 
 [project.urls]
 Homepage = "https://github.com/YannickGibson/riffly"
+Repository = "https://github.com/YannickGibson/riffly"
 Issues = "https://github.com/YannickGibson/riffly/issues"
 
 # torch resolves from PyPI by default, which is the CUDA (GPU) build on

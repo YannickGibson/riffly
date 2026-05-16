@@ -1,6 +1,6 @@
 # Riffly
 
-A tiny VAE that writes looping, rap-style MIDI melodies.
+A tiny VAE that writes loopable, catchy MIDI riffs.
 
 Riffly trains a Variational Autoencoder on piano-roll segments from a folder of MIDI files, then samples short loops you can save as MIDI, render to audio, or plot. Models are small enough to train on a single GPU in minutes and to run inference on CPU.
 

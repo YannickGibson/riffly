@@ -24,6 +24,11 @@ htmlcov/
 *.swp
 .DS_Store
 
+# Secrets / local environment
+.env
+.env.*
+!.env.example
+
 # Project artefacts
 data/
 runs/
