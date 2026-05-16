@@ -6,12 +6,16 @@ Riffly trains a Variational Autoencoder on piano-roll segments from a folder of 
 
 ## Sample output
 
-Unconditional sample from the bundled `pop` checkpoint (see [Pretrained checkpoint](#pretrained-checkpoint)).
-The piano roll: rows are pitches (low to high), columns are time steps.
+Unconditional samples — piano rolls with pitch on the y axis (low → high) and time on the x axis.
 
-![pop preview](assets/preview/melody_3.png)
+<p align="center">
+  <img src="assets/preview/melody_3.png" alt="pop preview" width="300">
+  &nbsp;
+  <img src="assets/single_melody.png" alt="single generated melody" width="300">
+</p>
 
-Listen: [melody_3.wav](assets/preview/melody_3.wav). The `.mid` is also in [`assets/preview/`](assets/preview/) if you want to load it into a DAW.
+Left: from the bundled `pop` checkpoint (see [Pretrained checkpoint](#pretrained-checkpoint)). Listen: [melody_3.wav](assets/preview/melody_3.wav); MIDI in [`assets/preview/`](assets/preview/).
+Right: a single roll plotted with `riffly.plot()`.
 
 ## Pretrained checkpoint
 
@@ -62,7 +66,7 @@ Pass `generate(..., multi_track=True)` to split each melody into three voices, m
 
 ### Plotting a generation
 
-`generate(save="out/")` writes a `.png` for every melody. To show one on screen instead:
+`generate(save="out/")` writes a `.png` for every melody. To show one on screen instead (the right-hand image at the top of this README):
 
 ```python
 from riffly import Riffly, plot
@@ -71,10 +75,6 @@ model = Riffly("convvae")
 roll = model.generate(n=1)[0]
 plot(roll)
 ```
-
-<p align="center">
-  <img src="assets/single_melody.png" alt="single generated melody" width="250">
-</p>
 
 Plotting needs the `interactive` extra (see Install).
 
