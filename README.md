@@ -56,9 +56,9 @@ from riffly import Riffly
 model = Riffly("convvae")                      # or "vae", "transformer"
 model.train(data="datasets/adl-piano-midi", epochs=100)
 model.generate(n=8, save="out/")               # writes MIDI + WAV + PNG for each melody
-model.save("riffly.pt")
+model.save("model.pt")
 
-Riffly("riffly.pt").generate(n=4, save="more/", wav=False)   # opt out: MIDI + PNG only
+Riffly("model.pt").generate(n=4, save="more/", wav=False)   # opt out: MIDI + PNG only
 ```
 
 That is the whole workflow: construct, `train`, `generate`, `save`.
