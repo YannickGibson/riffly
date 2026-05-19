@@ -54,14 +54,15 @@ def render_png(pm: pretty_midi.PrettyMIDI, path: str, title: str) -> None:
 
     fig, ax = plt.subplots(figsize=(8, 5.5))
     ax.imshow(crop, interpolation="none", cmap="gray", origin="lower", aspect="auto")
-    ax.set_title(title, fontsize=28, pad=18)
+    # suptitle centres on the whole figure width, not just the axes.
+    fig.suptitle(title, fontsize=28)
     for spine in ax.spines.values():
         spine.set_edgecolor("black")
         spine.set_linewidth(1)
     ax.set_xticks([])
     ax.set_yticks([])
     fig.tight_layout()
-    fig.savefig(path, dpi=160, bbox_inches="tight")
+    fig.savefig(path, dpi=160, bbox_inches="tight", pad_inches=0.2)
     plt.close(fig)
 
 
