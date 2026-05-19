@@ -9,13 +9,16 @@ Riffly trains a Variational Autoencoder on piano-roll segments from a folder of 
 Unconditional samples — piano rolls with pitch on the y axis (low → high) and time on the x axis.
 
 <p align="center">
-  <img src="assets/preview/melody_3.png" alt="pop preview" width="300">
+  <img src="assets/preview/sample_left.png" alt="Sample Left" width="300">
   &nbsp;
-  <img src="assets/single_melody.png" alt="single generated melody" width="300">
+  <img src="assets/preview/sample_right.png" alt="Sample Right" width="300">
 </p>
 
-Left: from the bundled `pop` checkpoint (see [Pretrained checkpoint](#pretrained-checkpoint)). Listen: [melody_3.wav](assets/preview/melody_3.wav); MIDI in [`assets/preview/`](assets/preview/).
-Right: a single roll plotted with `riffly.plot()`.
+Two loops sampled from models built on this repo's architecture. GitHub can't
+play audio inline, so the links below are downloads:
+
+- Left — [`sample_left.wav`](assets/preview/sample_left.wav) · [`sample_left.mid`](assets/preview/sample_left.mid)
+- Right — [`sample_right.wav`](assets/preview/sample_right.wav) · [`sample_right.mid`](assets/preview/sample_right.mid)
 
 ## Pretrained checkpoint
 
@@ -66,7 +69,7 @@ Pass `generate(..., multi_track=True)` to split each melody into three voices, m
 
 ### Plotting a generation
 
-`generate(save="out/")` writes a `.png` for every melody. To show one on screen instead (the right-hand image at the top of this README):
+`generate(save="out/")` writes a `.png` for every melody (like the piano rolls at the top of this README). To show one on screen instead:
 
 ```python
 from riffly import Riffly, plot
