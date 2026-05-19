@@ -1,7 +1,5 @@
 # Riffly
 
-A melody generator suite for creating looping melodies.
-
 Riffly is a straightforward way to generate melodies: point it at a handful of MIDI files, train a small Variational Autoencoder on them, and sample short, loopable, and stylized riffs you can save as MIDI, render to audio, or plot. It implicitly ships a preprocessing pipeline that handles data augmentation, key detection, and tempo detection, turning raw MIDI files into training-ready piano-roll segments. Models are small enough to run entirely on a CPU: training takes minutes, inference takes under a second.
 
 ## Sample output
