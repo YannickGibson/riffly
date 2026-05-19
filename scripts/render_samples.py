@@ -44,7 +44,7 @@ def render_wav(pm: pretty_midi.PrettyMIDI, path: str) -> None:
     wavfile.write(path, AUDIO_FS, audio.astype(np.float32))
 
 
-def render_png(pm: pretty_midi.PrettyMIDI, path: str) -> None:
+def render_png(pm: pretty_midi.PrettyMIDI, path: str, title: str) -> None:
     """Plot the MIDI's true piano roll (128 pitches), cropped to active range."""
     roll = pm.get_piano_roll(fs=ROLL_FS)  # (128, time)
     active = np.where(roll.sum(axis=1) > 0)[0]
@@ -52,9 +52,9 @@ def render_png(pm: pretty_midi.PrettyMIDI, path: str) -> None:
     hi = min(active.max() + 3, 128)
     crop = roll[lo:hi] > 0
 
-    fig, ax = plt.subplots(figsize=(8, 4))
+    fig, ax = plt.subplots(figsize=(8, 5.5))
     ax.imshow(crop, interpolation="none", cmap="gray", origin="lower", aspect="auto")
-    ax.set_title("Generated Melody")
+    ax.set_title(title, fontsize=28, pad=18)
     for spine in ax.spines.values():
         spine.set_edgecolor("black")
         spine.set_linewidth(1)
@@ -66,11 +66,11 @@ def render_png(pm: pretty_midi.PrettyMIDI, path: str) -> None:
 
 
 def main() -> None:
-    for name in SAMPLES:
+    for i, name in enumerate(SAMPLES, start=1):
         pm = pretty_midi.PrettyMIDI(os.path.join(PREVIEW_DIR, f"{name}.mid"))
         png_path = os.path.join(PREVIEW_DIR, f"{name}.png")
         wav_path = os.path.join(PREVIEW_DIR, f"{name}.wav")
-        render_png(pm, png_path)
+        render_png(pm, png_path, title=f"Generated Melody {i}")
         render_wav(pm, wav_path)
         print(f"{name}: wrote {png_path} and {wav_path}")
 
