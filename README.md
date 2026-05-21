@@ -20,6 +20,8 @@ samples. GitHub can't play audio inline, so the links below are downloads:
 - Left — [`sample_left.wav`](assets/preview/sample_left.wav) · [`sample_left.mid`](assets/preview/sample_left.mid)
 - Right — [`sample_right.wav`](assets/preview/sample_right.wav) · [`sample_right.mid`](assets/preview/sample_right.mid)
 
+Want to try generating your own without installing anything? There's a free hosted demo at [melogen.ai/app](https://melogen.ai/app).
+
 ## Pretrained checkpoint
 
 ```python
